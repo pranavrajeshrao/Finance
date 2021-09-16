@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Value</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for portfolio in portfolios %}
+                <tr>
+                    <td>{{ portfolio.name }}</td>
+                    <td>{{ portfolio.number }}</td>
+                    <td>{{ portfolio.value | usd }}</td>
+                    <td>{{ portfolio.date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+  <p> Your portfolio has the following stocks </p>
+  <table class="table table-striped">
+
+  <thead>
+    <tr>
+      <td>Name of stock</td>
+      <td>Number of stocks</td>
+      <td>Cost of stock</td>
+      <td>Value of stock</td>
+    </tr>
+  </thead>
+
+  <tfoot>
+    <tr>
+      <td colspan="4"></td>
+      <td>{{ cash_remaining | usd }}</td>
+    </tr>
+  </tfoot>
+  <tbody>
+  {% for userID in portfolio %}
+  <p>
+    <tr>
+      <td>{{ portfolio.name}} </td>
+      <td>{{portfolio.number}}</td>
+      <td> {{portfolio.price | usd}}</td>
+      <td> {{portfolio.value | usd}}</td>
+    </tr>
+  </p>
+    {% endfor %}
+  </tbody>
+
+   <p> Your current cash balance {{users.cash | usd}}  </p>
+    <p> Grand Total (cash + stocks) {{users.cash + (porfolio.value * porfolio.number) | usd}} </p>
+
+{% endblock %}
